@@ -1,0 +1,89 @@
+@baseUrl = http://localhost:8080/api/usuarios
+
+###Crear usuario
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+    "id" : 1,
+    "nombreUsuario" : "admin1",
+    "nombreCompleto" : "administrador principal",
+    "contraseña" : "admin123",
+    "rol" : "ESTANDAR"
+}
+
+###Usuario con rol estandar
+
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+    "id" : 2,
+    "nombreUsuario" : "Maria",
+    "nombreCompleto" : "Maria Rojas",
+    "contraseña" : "maria123",
+    "rol" : "ESTANDAR"
+}
+
+### Usuario con rol estandar 2
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+    "id" : 3,
+    "nombreUsuario" : "juliana",
+    "nombreCompleto" : "juliana campos",
+    "contraseña" : "juliana456",
+    "rol" : "ESTANDAR"
+}
+
+##ver todos los usuarios con el rol admin
+GET {{baseUrl}}
+
+###ver un solo usuario por id, rol admin
+GET {{baseUrl}}/1
+
+###ver el usuario por id 2 
+GET {{baseUrl}}/2
+
+###actualizar un usuario, rol admin
+PUT {{baseUrl}}/2
+Content-Type: application/json
+
+{
+    "id" : 2,
+    "nombreUsuario" : "Maria",
+    "nombreCompleto" : "Maria peña",
+    "contraseña" : "maria123",
+    "rol" : "ESTANDAR"
+}
+
+###actualizar mi propio perfil (rol estandar y admin)
+PUT {{baseUrl}}/mi-perfil/2
+Content-Type: application/json
+
+{
+    "id" : 2,
+    "nombreUsuario" : "Maria",
+    "nombreCompleto" : "Maria rojas peña - mi perfil",
+    "contraseña" : "maria123",
+    "rol" : "ESTANDAR"
+}
+
+###actualizar el rol de una persona
+PUT {{baseUrl}}/2
+Content-Type: application/json
+
+{
+    "id" : 2,
+    "nombreUsuario" : "Maria",
+    "nombreCompleto" : "Maria rojas peña - mi perfil",
+    "contraseña" : "maria123",
+    "rol" : "ADMINISTRADOR"
+}
+
+###eliminar usuario
+DELETE {{baseUrl}}/3
+
+###eliminar usuario 2
+DELETE {{baseUrl}}/2
